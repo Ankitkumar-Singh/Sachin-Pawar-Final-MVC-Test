@@ -1,0 +1,53 @@
+﻿@model WebApplicationMVCPractice.Models.TransactionDetail
+
+<script src="~/Assets/js/Script.js"></script>
+@* Transfer Amount Page *@
+@using (Html.BeginForm())
+{
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Transfer Money</h3>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Transfer Money</li>
+            </ol>
+        </div>
+    </div>
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header bg-info">
+                    <h4 class="m-b-0 text-white">Transfer Money</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#">
+                        <div class="form-body">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Html.LabelFor(model => model.TransferTo)</label>
+                                    @Html.DropDownList("TransferTo", (IEnumerable<SelectListItem>)ViewBag.TransferTo, "Select Receivers Account Number", htmlAttributes: new { @class = "form-control custom-select" })
+                                    @Html.ValidationMessageFor(model => model.AccountNumber, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>@Html.LabelFor(model => model.TransferAmount)</label>
+                                        @Html.EditorFor(model => model.TransferAmount, new { htmlAttributes = new { @class = "form-control ", id = "extraRotiCount" , @placeholder = "Enter transfer Amount" } })
+                                        @Html.ValidationMessageFor(model => model.TransferAmount, "", new { @class = "text-danger"  })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-info"> <i class="fa fa-check"></i>Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}

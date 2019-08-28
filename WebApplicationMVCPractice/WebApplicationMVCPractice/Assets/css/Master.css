@@ -1,0 +1,11 @@
+﻿body {
+}
+.mainfooter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: lavender;
+    height: 50px;
+    padding-top: 15px;
+}

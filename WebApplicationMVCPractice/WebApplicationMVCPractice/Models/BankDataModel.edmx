@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BankModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BanksCustomer">
+          <Key>
+            <PropertyRef Name="AccountNumber" />
+          </Key>
+          <Property Name="CustomerName" Type="varchar" MaxLength="20" />
+          <Property Name="AccountNumber" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="UserRole" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="CurrentBalance" Type="int" />
+          <Property Name="Fund" Type="int" Nullable="false" />
+          <Property Name="TransactionPassword" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Funds">
+          <Key>
+            <PropertyRef Name="FundID" />
+          </Key>
+          <Property Name="FundID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fund" Type="int" />
+          <Property Name="AccountNumber" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransactionDetails">
+          <Key>
+            <PropertyRef Name="TransferID" />
+          </Key>
+          <Property Name="AccountNumber" Type="int" Nullable="false" />
+          <Property Name="TransferAmount" Type="int" />
+          <Property Name="TransferDate" Type="date" />
+          <Property Name="TransferFrom" Type="int" />
+          <Property Name="TransferTo" Type="int" />
+          <Property Name="CustomerName" Type="nchar" MaxLength="50" />
+          <Property Name="TransferID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Transacti__Accou__06CD04F7">
+          <End Role="BanksCustomer" Type="Self.BanksCustomer" Multiplicity="1" />
+          <End Role="TransactionDetails" Type="Self.TransactionDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BanksCustomer">
+              <PropertyRef Name="AccountNumber" />
+            </Principal>
+            <Dependent Role="TransactionDetails">
+              <PropertyRef Name="AccountNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__Accou__07C12930">
+          <End Role="BanksCustomer" Type="Self.BanksCustomer" Multiplicity="1" />
+          <End Role="TransactionDetails" Type="Self.TransactionDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BanksCustomer">
+              <PropertyRef Name="AccountNumber" />
+            </Principal>
+            <Dependent Role="TransactionDetails">
+              <PropertyRef Name="AccountNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Funds_Funds">
+          <End Role="BanksCustomer" Type="Self.BanksCustomer" Multiplicity="1" />
+          <End Role="Funds" Type="Self.Funds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BanksCustomer">
+              <PropertyRef Name="AccountNumber" />
+            </Principal>
+            <Dependent Role="Funds">
+              <PropertyRef Name="AccountNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BankModel1StoreContainer">
+          <EntitySet Name="BanksCustomer" EntityType="Self.BanksCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Funds" EntityType="Self.Funds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionDetails" EntityType="Self.TransactionDetails" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Transacti__Accou__06CD04F7" Association="Self.FK__Transacti__Accou__06CD04F7">
+            <End Role="BanksCustomer" EntitySet="BanksCustomer" />
+            <End Role="TransactionDetails" EntitySet="TransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__Accou__07C12930" Association="Self.FK__Transacti__Accou__07C12930">
+            <End Role="BanksCustomer" EntitySet="BanksCustomer" />
+            <End Role="TransactionDetails" EntitySet="TransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Funds_Funds" Association="Self.FK_Funds_Funds">
+            <End Role="BanksCustomer" EntitySet="BanksCustomer" />
+            <End Role="Funds" EntitySet="Funds" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BankModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BanksCustomer">
+          <Key>
+            <PropertyRef Name="AccountNumber" />
+          </Key>
+          <Property Name="CustomerName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AccountNumber" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserRole" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CurrentBalance" Type="Int32" />
+          <NavigationProperty Name="TransactionDetails" Relationship="Self.FK__Transacti__Accou__06CD04F7" FromRole="BanksCustomer" ToRole="TransactionDetails" />
+          <NavigationProperty Name="TransactionDetails1" Relationship="Self.FK__Transacti__Accou__07C12930" FromRole="BanksCustomer" ToRole="TransactionDetails" />
+          <NavigationProperty Name="Funds" Relationship="BankModel1.FK_Funds_Funds" FromRole="BanksCustomer" ToRole="Fund" />
+          <Property Name="Fund" Type="Int32" Nullable="false" />
+          <Property Name="TransactionPassword" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TransactionDetail">
+          <Key>
+            <PropertyRef Name="TransferID" />
+          </Key>
+          <Property Name="AccountNumber" Type="Int32" Nullable="false" />
+          <Property Name="TransferAmount" Type="Int32" />
+          <Property Name="TransferDate" Type="DateTime" Precision="0" />
+          <Property Name="TransferFrom" Type="Int32" />
+          <Property Name="TransferTo" Type="Int32" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="TransferID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="BanksCustomer" Relationship="Self.FK__Transacti__Accou__06CD04F7" FromRole="TransactionDetails" ToRole="BanksCustomer" />
+          <NavigationProperty Name="BanksCustomer1" Relationship="Self.FK__Transacti__Accou__07C12930" FromRole="TransactionDetails" ToRole="BanksCustomer" />
+        </EntityType>
+        <Association Name="FK__Transacti__Accou__06CD04F7">
+          <End Role="BanksCustomer" Type="Self.BanksCustomer" Multiplicity="1" />
+          <End Role="TransactionDetails" Type="Self.TransactionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BanksCustomer">
+              <PropertyRef Name="AccountNumber" />
+            </Principal>
+            <Dependent Role="TransactionDetails">
+              <PropertyRef Name="AccountNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__Accou__07C12930">
+          <End Role="BanksCustomer" Type="Self.BanksCustomer" Multiplicity="1" />
+          <End Role="TransactionDetails" Type="Self.TransactionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BanksCustomer">
+              <PropertyRef Name="AccountNumber" />
+            </Principal>
+            <Dependent Role="TransactionDetails">
+              <PropertyRef Name="AccountNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BankEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BanksCustomers" EntityType="Self.BanksCustomer" />
+          <EntitySet Name="TransactionDetails" EntityType="Self.TransactionDetail" />
+          <AssociationSet Name="FK__Transacti__Accou__06CD04F7" Association="Self.FK__Transacti__Accou__06CD04F7">
+            <End Role="BanksCustomer" EntitySet="BanksCustomers" />
+            <End Role="TransactionDetails" EntitySet="TransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__Accou__07C12930" Association="Self.FK__Transacti__Accou__07C12930">
+            <End Role="BanksCustomer" EntitySet="BanksCustomers" />
+            <End Role="TransactionDetails" EntitySet="TransactionDetails" />
+          </AssociationSet>
+          <EntitySet Name="Funds" EntityType="BankModel1.Fund" />
+          <AssociationSet Name="FK_Funds_Funds" Association="BankModel1.FK_Funds_Funds">
+            <End Role="BanksCustomer" EntitySet="BanksCustomers" />
+            <End Role="Fund" EntitySet="Funds" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Fund">
+          <Key>
+            <PropertyRef Name="FundID" />
+          </Key>
+          <Property Name="FundID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fund1" Type="Int32" Nullable="false" />
+          <Property Name="AccountNumber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BanksCustomer" Relationship="BankModel1.FK_Funds_Funds" FromRole="Fund" ToRole="BanksCustomer" />
+        </EntityType>
+        <Association Name="FK_Funds_Funds">
+          <End Type="BankModel1.BanksCustomer" Role="BanksCustomer" Multiplicity="1" />
+          <End Type="BankModel1.Fund" Role="Fund" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BanksCustomer">
+              <PropertyRef Name="AccountNumber" />
+            </Principal>
+            <Dependent Role="Fund">
+              <PropertyRef Name="AccountNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BankModel1StoreContainer" CdmEntityContainer="BankEntities1">
+          <EntitySetMapping Name="BanksCustomers">
+            <EntityTypeMapping TypeName="BankModel1.BanksCustomer">
+              <MappingFragment StoreEntitySet="BanksCustomer">
+                <ScalarProperty Name="TransactionPassword" ColumnName="TransactionPassword" />
+                <ScalarProperty Name="Fund" ColumnName="Fund" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="CurrentBalance" ColumnName="CurrentBalance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionDetails">
+            <EntityTypeMapping TypeName="BankModel1.TransactionDetail">
+              <MappingFragment StoreEntitySet="TransactionDetails">
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="TransferAmount" ColumnName="TransferAmount" />
+                <ScalarProperty Name="TransferDate" ColumnName="TransferDate" />
+                <ScalarProperty Name="TransferFrom" ColumnName="TransferFrom" />
+                <ScalarProperty Name="TransferTo" ColumnName="TransferTo" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="TransferID" ColumnName="TransferID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Funds">
+            <EntityTypeMapping TypeName="BankModel1.Fund">
+              <MappingFragment StoreEntitySet="Funds">
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="Fund1" ColumnName="Fund" />
+                <ScalarProperty Name="FundID" ColumnName="FundID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

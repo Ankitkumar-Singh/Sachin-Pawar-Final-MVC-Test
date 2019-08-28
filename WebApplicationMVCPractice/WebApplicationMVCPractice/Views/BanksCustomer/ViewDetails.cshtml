@@ -1,0 +1,87 @@
+﻿@model WebApplicationMVCPractice.Common.LoginDetails
+@* View Personal details Page *@
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Customers</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">@Html.ActionLink("Home", "Index", "BanksCustomer")</li>
+            <li class="breadcrumb-item active">Customer Details</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-xlg-3 col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <center class="m-t-30">
+                    <img src="~/Assets/images/user.png" class="img-circle" width="150" />
+                    <h4 class="card-title m-t-10">@Html.DisplayFor(model => model.CustomerName)</h4>
+                    <h6 class="card-subtitle"> @Html.DisplayFor(model => model.UserRole)</h6>
+                </center>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-xlg-9 col-md-7">
+        <div class="card">
+            <div class="card-body">
+                <form class="form-horizontal form-material">
+                    <div class="form-group">
+                        <label class="col-md-12">@Html.DisplayNameFor(model => model.CustomerName)</label>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.CustomerName)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">@Html.DisplayNameFor(model => model.AccountNumber1)</label>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.AccountNumber1)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">@Html.DisplayNameFor(model => model.CurrentBalance)</label>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.CurrentBalance)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">@Html.DisplayNameFor(model => model.UserName1)</label>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.UserName1)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">@Html.DisplayNameFor(model => model.Password1)</label>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.Password1)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">@Html.DisplayNameFor(model => model.TransactionPassword)</label>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.TransactionPassword)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">@Html.DisplayNameFor(model => model.Fund)</label>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.Fund)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            @Html.ActionLink("Back", "Index", new object { }, new { @class = "btn btn-info" })
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+﻿@* Admin partial view renders only if admin is logged in system, to show admin's menus *@
+<ul id="sidebarnav">
+    <li>
+        <a class="waves-effect waves-dark" href="@Url.Action("Index", "Admin")" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Customer Details</span></a>
+    </li>
+
+    <li>
+        <a class="waves-effect waves-dark" href="@Url.Action("AddFund", "Admin")" aria-expanded="false"><i class="fa fa-money"></i><span class="hide-menu">Add Funds</span></a>
+    </li>
+</ul>
