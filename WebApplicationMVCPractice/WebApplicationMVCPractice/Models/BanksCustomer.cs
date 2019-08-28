@@ -11,7 +11,9 @@ namespace WebApplicationMVCPractice.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using static WebApplication5.Common.RemoteClientServer;
+
     public partial class BanksCustomer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +23,29 @@ namespace WebApplicationMVCPractice.Models
             this.TransactionDetails1 = new HashSet<TransactionDetail>();
             this.Funds = new HashSet<Fund>();
         }
-    
+
+        [Display(Name = "First Name")]
+        [Required(ErrorMessage = "First name cannot be empty")]
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "First name cannot be longer than 20 characters and less than 2 characters")]
+        [RegularExpression("^([a-zA-Z]{2,})$", ErrorMessage = "First name contains only alphabets")]
         public string CustomerName { get; set; }
+
+        [Display(Name = "Account number")]
+        [Required(ErrorMessage = "Account number name cannot be empty maximun lenght is 10 digit")]
+        [DataType(DataType.PhoneNumber, ErrorMessage = "Invalid account number")]
+        [RemoteClientServer("IsAccountNumberAvailable", "Home", ErrorMessage = "Account number already in use.")]
         public int AccountNumber { get; set; }
+
+        [Display(Name = "User Name")]
+        [Required(ErrorMessage = "User name cannot be empty")]
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "User name cannot be longer than 20 characters and less than 2 characters")]
+        [RemoteClientServer("IsUserNameAvailable", "Home", ErrorMessage = "User name already in use.")]
         public string UserName { get; set; }
+
+        [Display(Name = "Password")]
+        [Required(ErrorMessage = "Password cannot be empty")]
+        [DataType(DataType.Password, ErrorMessage = "Invalid password")]
+        [StringLength(20, MinimumLength = 8, ErrorMessage = "Password cannot be longer than 20 characters and less than 8 characters")]
         public string Password { get; set; }
         public string UserRole { get; set; }
         public Nullable<int> CurrentBalance { get; set; }
