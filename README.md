@@ -15,7 +15,9 @@ Test Title: Online Banking management
                               Can add funds to user account.
                               
                              
-Login Credentials: 
+Login Credentials:
+
+
                     User Login:
                               1.UserName: Mayur
                                 Login Password: Mayur@123 
