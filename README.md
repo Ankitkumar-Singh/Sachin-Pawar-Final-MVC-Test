@@ -6,7 +6,6 @@
         Can register with their details and unique account number, username should be unique.
   #### User:
         Can check their account balance and other information i.e. account number.
-        Can fetch statement form specified period.
         Can transfer amount to other users (needs separate transaction password).
         Can change login password.
   #### Admin:
