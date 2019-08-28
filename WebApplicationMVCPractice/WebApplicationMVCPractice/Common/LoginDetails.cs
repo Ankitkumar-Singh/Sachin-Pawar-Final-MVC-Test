@@ -44,6 +44,7 @@ namespace WebApplicationMVCPractice.Common
 
         public int Fund { get; set; }
 
+        [DataType(DataType.Password, ErrorMessage = "Invalid password")]
         public string TransactionPassword { get; set; }
     }
 }

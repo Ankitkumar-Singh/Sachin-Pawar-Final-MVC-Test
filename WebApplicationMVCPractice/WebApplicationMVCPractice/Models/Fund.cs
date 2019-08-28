@@ -9,13 +9,18 @@
 
 namespace WebApplicationMVCPractice.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Fund
     {
         public int FundID { get; set; }
+
+        [Display(Name = "Fund")]
+        [Required(ErrorMessage = "Fund cannot be empty")]
         public int Fund1 { get; set; }
+
+        [Display(Name = "Account Number")]
+        [Required(ErrorMessage = "Account number cannot be empty")]
         public int AccountNumber { get; set; }
     
         public virtual BanksCustomer BanksCustomer { get; set; }

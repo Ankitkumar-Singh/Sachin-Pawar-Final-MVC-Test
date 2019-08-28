@@ -50,6 +50,8 @@ namespace WebApplicationMVCPractice.Models
         public string UserRole { get; set; }
         public Nullable<int> CurrentBalance { get; set; }
         public int Fund { get; set; }
+
+        [DataType(DataType.Password, ErrorMessage = "Invalid transaction password")]
         public string TransactionPassword { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
