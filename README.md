@@ -1,9 +1,8 @@
 # Sachin-Pawar-Final-MVC-Test
 
-##Test Title: Online Banking management
+## Test Title: Online Banking management
   #### User Registration:
         Can register with their details and unique account number, username should be unique.
-
   #### User:
         Can check their account balance and other information i.e. account number.
         Can fetch statement form specified period.
@@ -14,17 +13,14 @@
         Can add funds to user account.
                               
                              
-##Login Credentials:
-
+## Login Credentials:
    #### User Login:
               1.UserName: Mayur
                 Login Password: Mayur@123 
-                Transaction Password: Mayur@111                      
-
+                Transaction Password: Mayur@111
               2.UserName: Swapnil
                 Login Password: Swapnil@123
                 Transaction Password: Swapnil@555
-
    #### Admin Login: 
               1.UserName: Sachin
                 Login Password: Sachin@123            
