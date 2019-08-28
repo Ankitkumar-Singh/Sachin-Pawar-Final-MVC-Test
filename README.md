@@ -1,7 +1,8 @@
 # Sachin-Pawar-Final-MVC-Test
 
-Online Banking management
-                        User Registration:
+Test Title: Online Banking management
+                       
+                       User Registration:
                                            Can register with their details and unique account number, username should be unique.
                                            
                         User:
