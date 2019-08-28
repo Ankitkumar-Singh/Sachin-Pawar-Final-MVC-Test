@@ -15,18 +15,19 @@ Test Title: Online Banking management
                               Can add funds to user account.
                               
                              
-User Login:
-          1.UserName: Mayur
-            Login Password: Mayur@123 
-            Transaction Password: Mayur@111                      
-            
-          2.UserName: Swapnil
-            Login Password: Swapnil@123
-            Transaction Password: Swapnil@555
-            
-Admin Login: 
-          1.UserName: Sachin
-            Login Password: Sachin@123            
-            
-          2.UserName: Rahul
-            Login Password: Rahul@123
+Login Credentials: 
+                    User Login:
+                              1.UserName: Mayur
+                                Login Password: Mayur@123 
+                                Transaction Password: Mayur@111                      
+
+                              2.UserName: Swapnil
+                                Login Password: Swapnil@123
+                                Transaction Password: Swapnil@555
+
+                    Admin Login: 
+                              1.UserName: Sachin
+                                Login Password: Sachin@123            
+
+                              2.UserName: Rahul
+                                Login Password: Rahul@123
