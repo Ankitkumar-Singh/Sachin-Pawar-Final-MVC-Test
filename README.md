@@ -7,6 +7,7 @@
   #### User:
         Can check their account balance and other information i.e. account number.
         Can transfer amount to other users (needs separate transaction password).
+        Can fetch statement.
         Can change login password.
   #### Admin:
         Can see all user information name, account no, current balance.
